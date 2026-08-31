@@ -24,26 +24,23 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-[var(--color-border)] bg-[var(--color-bg)]/90 backdrop-blur" : "border-b border-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass-strong border-b" : "border-b border-transparent"
       }`}
+      style={scrolled ? { borderBottomColor: "var(--color-glass-border)" } : undefined}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-mono text-sm font-semibold text-[var(--color-text)]">
-          <span className="text-[var(--color-accent)]">~/</span>
-          {profile.name.toLowerCase().replace(" ", "-")}
+        <a href="#top" className="font-display text-base font-semibold text-[var(--color-text)]">
+          <span className="gradient-text">Pankaj</span> Kumar
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
-          {LINKS.map((link, i) => (
+          {LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="group font-mono text-sm text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-accent)]"
+              className="font-mono text-sm text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-accent-2)]"
             >
-              <span className="text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)]">
-                0{i + 1}.
-              </span>{" "}
               {link.label}
             </a>
           ))}
@@ -51,7 +48,7 @@ export default function Nav() {
             href={profile.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded border border-[var(--color-accent)] px-4 py-1.5 font-mono text-sm text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent-soft)]"
+            className="gradient-fill rounded-full px-5 py-2 font-mono text-sm font-semibold text-[#05050b] transition-transform hover:-translate-y-0.5"
           >
             Resume
           </a>
@@ -67,7 +64,7 @@ export default function Nav() {
       </nav>
 
       {open && (
-        <div className="border-t border-[var(--color-border)] bg-[var(--color-bg)] px-6 py-4 md:hidden">
+        <div className="glass-strong border-t px-6 py-4 md:hidden" style={{ borderTopColor: "var(--color-glass-border)" }}>
           <div className="flex flex-col gap-4">
             {LINKS.map((link) => (
               <a
@@ -83,7 +80,7 @@ export default function Nav() {
               href={profile.resumeUrl}
               target="_blank"
               rel="noreferrer"
-              className="w-fit rounded border border-[var(--color-accent)] px-4 py-1.5 font-mono text-sm text-[var(--color-accent)]"
+              className="gradient-fill w-fit rounded-full px-5 py-2 font-mono text-sm font-semibold text-[#05050b]"
             >
               Resume
             </a>

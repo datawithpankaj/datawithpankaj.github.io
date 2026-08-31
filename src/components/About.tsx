@@ -11,11 +11,11 @@ export default function About() {
 
       <div
         ref={ref}
-        className={`grid gap-12 transition-all duration-700 md:grid-cols-5 ${
+        className={`grid gap-6 transition-all duration-700 md:grid-cols-5 ${
           visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
-        <div className="md:col-span-3">
+        <div className="glass rounded-3xl p-8 md:col-span-3">
           <p className="text-lg leading-relaxed text-[var(--color-text-muted)]">
             I'm a Senior Data Engineer based in {profile.location}, with nearly six years spent
             designing and running Lakehouse platforms, streaming pipelines, and data warehouses
@@ -34,9 +34,9 @@ export default function About() {
           </p>
         </div>
 
-        <div className="md:col-span-2">
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6">
-            <h3 className="font-mono text-sm text-[var(--color-accent)]">education</h3>
+        <div className="flex flex-col gap-6 md:col-span-2">
+          <div className="glass glass-hover rounded-3xl p-6">
+            <h3 className="font-mono text-sm text-[var(--color-accent-2)]">education</h3>
             <p className="mt-3 font-semibold text-[var(--color-text)]">{education.degree}</p>
             <p className="text-sm text-[var(--color-text-muted)]">{education.note}</p>
             <p className="mt-2 text-sm text-[var(--color-text-dim)]">
@@ -44,8 +44,8 @@ export default function About() {
             </p>
           </div>
 
-          <div className="mt-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6">
-            <h3 className="font-mono text-sm text-[var(--color-accent)]">based_in</h3>
+          <div className="glass glass-hover flex-1 rounded-3xl p-6">
+            <h3 className="font-mono text-sm text-[var(--color-accent-2)]">based_in</h3>
             <p className="mt-3 text-[var(--color-text)]">{profile.location}</p>
             <p className="mt-1 text-sm text-[var(--color-text-muted)]">Open to remote &amp; freelance work</p>
           </div>

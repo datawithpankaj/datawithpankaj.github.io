@@ -47,109 +47,107 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="border-t border-[var(--color-border)] bg-[var(--color-bg-elevated)]">
-      <div className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading index="06" title="Get In Touch" subtitle="Freelance work, full-time roles, or just a hello" />
+    <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
+      <SectionHeading index="06" title="Get In Touch" subtitle="Freelance work, full-time roles, or just a hello" />
 
-        <div className="grid gap-12 md:grid-cols-5">
-          <div className="md:col-span-2">
-            <p className="text-[var(--color-text-muted)]">
-              Whether it's a freelance data engineering project, a full-time role, or a question
-              about something I built — I read every message.
-            </p>
+      <div className="grid gap-6 md:grid-cols-5">
+        <div className="glass rounded-3xl p-8 md:col-span-2">
+          <p className="text-[var(--color-text-muted)]">
+            Whether it's a freelance data engineering project, a full-time role, or a question
+            about something I built — I read every message.
+          </p>
 
-            <div className="mt-8 space-y-4">
-              <a
-                href={`mailto:${profile.email}`}
-                className="flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-accent)]"
-              >
-                <Mail size={18} />
-                <span className="font-mono text-sm">{profile.email}</span>
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-accent)]"
-              >
-                <LinkedinIcon size={18} />
-                <span className="font-mono text-sm">linkedin.com/in/mepankajkumar</span>
-              </a>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-accent)]"
-              >
-                <GithubIcon size={18} />
-                <span className="font-mono text-sm">github.com/datawithpankaj</span>
-              </a>
+          <div className="mt-8 space-y-4">
+            <a
+              href={`mailto:${profile.email}`}
+              className="flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-accent-2)]"
+            >
+              <Mail size={18} />
+              <span className="font-mono text-sm">{profile.email}</span>
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-accent-2)]"
+            >
+              <LinkedinIcon size={18} />
+              <span className="font-mono text-sm">linkedin.com/in/mepankajkumar</span>
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-accent-2)]"
+            >
+              <GithubIcon size={18} />
+              <span className="font-mono text-sm">github.com/datawithpankaj</span>
+            </a>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:col-span-3">
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="font-mono text-xs text-[var(--color-text-dim)]">
+                name
+              </label>
+              <input
+                id="name"
+                name="name"
+                required
+                className="glass rounded-xl px-3 py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent-2)]"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="font-mono text-xs text-[var(--color-text-dim)]">
+                email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="glass rounded-xl px-3 py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent-2)]"
+              />
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="md:col-span-3">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="font-mono text-xs text-[var(--color-text-dim)]">
-                  name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  required
-                  className="rounded border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent)]"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="font-mono text-xs text-[var(--color-text-dim)]">
-                  email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="rounded border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent)]"
-                />
-              </div>
-            </div>
+          <div className="mt-5 flex flex-col gap-2">
+            <label htmlFor="message" className="font-mono text-xs text-[var(--color-text-dim)]">
+              message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              required
+              className="glass resize-none rounded-xl px-3 py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent-2)]"
+            />
+          </div>
 
-            <div className="mt-5 flex flex-col gap-2">
-              <label htmlFor="message" className="font-mono text-xs text-[var(--color-text-dim)]">
-                message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                className="resize-none rounded border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent)]"
-              />
-            </div>
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="gradient-fill mt-5 rounded-full px-6 py-3 font-mono text-sm font-semibold text-[#05050b] disabled:opacity-60"
+          >
+            {status === "sending" ? "Sending..." : "Send Message"}
+          </button>
 
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="mt-5 rounded bg-[var(--color-accent)] px-6 py-3 font-mono text-sm font-semibold text-[#0a0e14] disabled:opacity-60"
-            >
-              {status === "sending" ? "Sending..." : "Send Message"}
-            </button>
-
-            {status === "sent" && (
-              <p className="mt-3 text-sm text-[var(--color-accent)]">Thanks — message sent. I'll get back to you soon.</p>
-            )}
-            {status === "error" && (
-              <p className="mt-3 text-sm text-red-400">
-                Something went wrong — email me directly at {profile.email}.
-              </p>
-            )}
-            {!FORM_ENDPOINT && (
-              <p className="mt-3 text-xs text-[var(--color-text-dim)]">
-                Submitting opens your email client (form backend not yet configured — see README).
-              </p>
-            )}
-          </form>
-        </div>
+          {status === "sent" && (
+            <p className="mt-3 text-sm text-[var(--color-accent-2)]">Thanks — message sent. I'll get back to you soon.</p>
+          )}
+          {status === "error" && (
+            <p className="mt-3 text-sm text-red-400">
+              Something went wrong — email me directly at {profile.email}.
+            </p>
+          )}
+          {!FORM_ENDPOINT && (
+            <p className="mt-3 text-xs text-[var(--color-text-dim)]">
+              Submitting opens your email client (form backend not yet configured — see README).
+            </p>
+          )}
+        </form>
       </div>
     </section>
   );
