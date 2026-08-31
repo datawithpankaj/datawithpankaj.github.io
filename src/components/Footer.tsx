@@ -5,29 +5,29 @@ import { profile, services } from "../data/content";
 const NAV = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
+  { href: "#projects", label: "Work" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] px-6 py-14">
+    <footer className="rule border-t px-6 py-14">
       <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-4">
         <div>
-          <p className="font-display text-lg font-bold text-[var(--color-text)]">{profile.name}</p>
+          <p className="text-lg font-extrabold text-[var(--color-text)]">{profile.name}</p>
           <p className="mt-2 text-sm text-[var(--color-text-muted)]">
             Building reliable data platforms across healthcare, banking, and telecom.
           </p>
-          <div className="mt-4 flex items-center gap-3">
-            <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="pill flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-muted)]">
-              <GithubIcon size={15} />
+          <div className="mt-4 flex items-center gap-4">
+            <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]">
+              <GithubIcon size={16} />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="pill flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-muted)]">
-              <LinkedinIcon size={15} />
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]">
+              <LinkedinIcon size={16} />
             </a>
-            <a href={`mailto:${profile.email}`} aria-label="Email" className="pill flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-muted)]">
-              <Mail size={15} />
+            <a href={`mailto:${profile.email}`} aria-label="Email" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]">
+              <Mail size={16} />
             </a>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-2">
             {NAV.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
+                <a href={link.href} className="link-underline text-sm text-[var(--color-text-muted)]">
                   {link.label}
                 </a>
               </li>
@@ -62,13 +62,13 @@ export default function Footer() {
             <li>{profile.email}</li>
             <li>{profile.location}</li>
           </ul>
-          <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="pill mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-[var(--color-text)]">
+          <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-outline mt-4 inline-flex items-center px-4 py-2 text-xs font-semibold uppercase tracking-wide">
             Download Resume
           </a>
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-6xl border-t border-[var(--color-border)] pt-6 text-sm text-[var(--color-text-dim)]">
+      <div className="rule mx-auto mt-10 max-w-6xl border-t pt-6 text-sm text-[var(--color-text-dim)]">
         &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
       </div>
     </footer>

@@ -7,15 +7,13 @@ export default function About() {
 
   return (
     <section id="about" className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHeading eyebrow="About" title="A bit more context" />
+      <SectionHeading number="01" title="About" />
 
       <div
         ref={ref}
-        className={`grid gap-6 transition-all duration-700 md:grid-cols-5 ${
-          visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-        }`}
+        className={`grid grid-cols-12 gap-8 transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
       >
-        <div className="card p-8 md:col-span-3">
+        <div className="col-span-12 sm:col-span-8">
           <p className="text-lg leading-relaxed text-[var(--color-text-muted)]">
             I'm a Senior Data Engineer based in {profile.location}, with nearly six years spent
             designing and running Lakehouse platforms, streaming pipelines, and data warehouses
@@ -34,21 +32,17 @@ export default function About() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 md:col-span-2">
-          <div className="card card-hover p-6">
-            <p className="eyebrow">Education</p>
-            <p className="mt-3 font-semibold text-[var(--color-text)]">{education.degree}</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{education.note}</p>
-            <p className="mt-2 text-sm text-[var(--color-text-dim)]">
-              {education.school} · {education.period}
-            </p>
-          </div>
+        <div className="rule col-span-12 border-t pt-6 sm:col-span-4 sm:border-t-0 sm:pt-0">
+          <p className="eyebrow">Education</p>
+          <p className="mt-3 font-semibold text-[var(--color-text)]">{education.degree}</p>
+          <p className="text-sm text-[var(--color-text-muted)]">{education.note}</p>
+          <p className="mt-1 text-sm text-[var(--color-text-dim)]">
+            {education.school} · {education.period}
+          </p>
 
-          <div className="card card-hover flex-1 p-6">
-            <p className="eyebrow">Based in</p>
-            <p className="mt-3 text-[var(--color-text)]">{profile.location}</p>
-            <p className="mt-1 text-sm text-[var(--color-text-muted)]">Open to remote &amp; freelance work</p>
-          </div>
+          <p className="eyebrow mt-8">Based in</p>
+          <p className="mt-3 text-[var(--color-text)]">{profile.location}</p>
+          <p className="mt-1 text-sm text-[var(--color-text-muted)]">Open to remote &amp; freelance work</p>
         </div>
       </div>
     </section>

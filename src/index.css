@@ -1,23 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-bg: #fafaf9;
-  --color-surface: #ffffff;
-  --color-border: #e4e4e7;
-  --color-border-hover: #a1a1aa;
+  --color-bg: #f4f3ef;
+  --color-text: #111111;
+  --color-text-muted: #55534d;
+  --color-text-dim: #8a887f;
 
-  --color-text: #0a0a0a;
-  --color-text-muted: #52525b;
-  --color-text-dim: #a1a1aa;
+  --color-border: #111111;
+  --color-border-soft: #d8d6cd;
 
-  --color-accent: #4338ca;
-  --color-accent-soft: #4338ca14;
-  --color-status: #16a34a;
+  --color-accent: #e0301e;
+  --color-accent-soft: #e0301e12;
 }
 
 html {
@@ -32,91 +29,96 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: #fafaf9;
-}
-
-.font-display {
-  font-family: var(--font-display);
-}
-
-/* Solid/outline duotone name treatment for the hero */
-.text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-text);
-  text-stroke: 1.5px var(--color-text);
+  color: #f4f3ef;
 }
 
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-dim);
 }
 
-.pill {
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+/* Oversized poster-style section numeral, hollow outline */
+.numeral {
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-border);
+  text-stroke: 1.5px var(--color-border);
+  line-height: 0.8;
+  letter-spacing: 0.04em;
 }
 
-.pill:hover {
-  border-color: var(--color-border-hover);
+.rule {
+  border-top: 1px solid var(--color-border);
 }
 
-.pill-solid {
-  border-radius: 999px;
-  background-color: var(--color-text);
-  color: var(--color-bg);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.rule-soft {
+  border-top: 1px solid var(--color-border-soft);
 }
 
-.pill-solid:hover {
-  transform: translateY(-1px);
-  opacity: 0.88;
-}
-
+/* Flat, square-cornered tag — no pill chrome */
 .tag {
-  border-radius: 999px;
   border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  font-family: var(--font-mono);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .tag:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  background-color: var(--color-border);
+  color: var(--color-bg);
 }
 
-.card {
-  border-radius: 1.5rem;
+.btn-solid {
+  background-color: var(--color-border);
+  color: var(--color-bg);
+  transition: background-color 0.15s ease;
+}
+
+.btn-solid:hover {
+  background-color: var(--color-accent);
+}
+
+.btn-outline {
   border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  color: var(--color-text);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.card-hover:hover {
-  border-color: var(--color-border-hover);
-  box-shadow: 0 20px 40px -20px rgba(10, 10, 10, 0.12);
+.btn-outline:hover {
+  background-color: var(--color-border);
+  color: var(--color-bg);
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-soft);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+
+.link-underline:hover {
+  text-decoration-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
+  50% { opacity: 0.3; }
 }
 
 .pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+  animation: pulse-dot 1.8s ease-in-out infinite;
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-up {
-  animation: fade-up 0.7s ease-out both;
+  animation: fade-up 0.6s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {

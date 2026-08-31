@@ -1,4 +1,4 @@
-import { Download, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import PhotoSlot from "./PhotoSlot";
 import { profile } from "../data/content";
@@ -9,92 +9,98 @@ const SOCIALS = [
   { href: `mailto:${profile.email}`, label: "Email", Icon: Mail },
 ];
 
+const INDEX = [
+  { n: "01", href: "#about", label: "About" },
+  { n: "02", href: "#experience", label: "Experience" },
+  { n: "03", href: "#skills", label: "Skills" },
+  { n: "04", href: "#projects", label: "Work" },
+  { n: "05", href: "#services", label: "Freelance" },
+  { n: "06", href: "#contact", label: "Contact" },
+];
+
 export default function Hero() {
   return (
-    <section id="top" className="mx-auto max-w-6xl px-6 pb-16 pt-32 sm:pt-40">
-      <div className="animate-fade-up flex items-center justify-between gap-4">
-        <span className="pill inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-[var(--color-text-muted)] sm:text-sm">
-          <span className="pulse-dot h-2 w-2 rounded-full" style={{ backgroundColor: "var(--color-status)" }} />
-          Available for full-time roles &amp; freelance projects
+    <section id="top" className="mx-auto max-w-6xl px-6 pb-20 pt-14 sm:pt-20">
+      <div className="animate-fade-up flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[var(--color-text-dim)]">
+        <span>Portfolio / {new Date().getFullYear()}</span>
+        <span className="flex items-center gap-2">
+          <span className="pulse-dot h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--color-accent)" }} />
+          Available for work
         </span>
+      </div>
 
-        <div className="hidden flex-col gap-3 sm:flex">
-          {SOCIALS.map(({ href, label, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noreferrer"
-              aria-label={label}
-              className="pill flex h-10 w-10 items-center justify-center rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-            >
-              <Icon size={17} />
+      <h1 className="mt-6 text-[16vw] font-black leading-[0.85] tracking-tight text-[var(--color-text)] sm:text-8xl lg:text-9xl">
+        Pankaj
+        <br />
+        Kumar
+      </h1>
+      <div className="mt-5 h-2 w-24" style={{ backgroundColor: "var(--color-accent)" }} />
+      <p className="mt-6 font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
+        Senior Data Engineer — {profile.location}
+      </p>
+
+      <div className="rule mt-10 grid grid-cols-12 gap-6 border-t pt-10">
+        <div className="col-span-12 sm:col-span-8">
+          <p className="max-w-xl text-lg leading-relaxed text-[var(--color-text-muted)]">{profile.summary}</p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a href="#contact" className="btn-solid px-6 py-3 text-sm font-semibold uppercase tracking-wide">
+              Let's collaborate
             </a>
-          ))}
+            <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-outline px-6 py-3 text-sm font-semibold uppercase tracking-wide">
+              Resume
+            </a>
+            <div className="flex items-center gap-4 pl-1">
+              {SOCIALS.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="text-[var(--color-text)] hover:text-[var(--color-accent)]"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-6 sm:col-span-2">
+          <PhotoSlot />
         </div>
       </div>
 
-      <div className="relative mt-6 grid items-center gap-8 lg:mt-4 lg:grid-cols-[1fr_auto_1fr]">
-        <h1 className="font-display text-[15vw] font-bold leading-[0.95] text-[var(--color-text)] sm:text-7xl lg:col-span-3 lg:row-start-1 lg:text-[6.4vw] lg:leading-[0.92]">
-          <span className="block lg:inline">Pankaj</span>{" "}
-          <span className="text-outline block lg:inline">Kumar</span>
-        </h1>
-
-        <div className="order-first mx-auto w-40 sm:w-52 lg:order-none lg:col-start-2 lg:row-start-1 lg:mx-0 lg:w-56 lg:justify-self-center">
-          <PhotoSlot className="rounded-[2rem]" />
-        </div>
-      </div>
-
-      <div className="mt-8 flex flex-col items-start gap-6 sm:mt-10 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="font-display text-xl font-semibold text-[var(--color-text)] sm:text-2xl">
-            Senior Data Engineer
-          </p>
-          <p className="mt-2 max-w-lg text-[var(--color-text-muted)]">{profile.tagline}.</p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <a href="#contact" className="pill-solid inline-flex items-center gap-2 px-5 py-3 text-sm font-medium">
-            Let's collaborate
-          </a>
-          <a
-            href={profile.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="pill inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-[var(--color-text)]"
-          >
-            <Download size={15} />
-            Resume
-          </a>
-        </div>
-      </div>
-
-      <div className="mt-6 flex items-center gap-3 sm:hidden">
-        {SOCIALS.map(({ href, label, Icon }) => (
-          <a
-            key={label}
-            href={href}
-            target={href.startsWith("mailto:") ? undefined : "_blank"}
-            rel="noreferrer"
-            aria-label={label}
-            className="pill flex h-10 w-10 items-center justify-center rounded-full text-[var(--color-text-muted)]"
-          >
-            <Icon size={17} />
-          </a>
-        ))}
-      </div>
-
-      <dl className="mt-16 grid grid-cols-2 gap-6 border-t border-[var(--color-border)] pt-8 sm:grid-cols-4">
+      <dl className="rule mt-14 grid grid-cols-2 gap-6 border-t pt-8 sm:grid-cols-4">
         {profile.stats.map((stat) => (
           <div key={stat.label}>
-            <dt className="font-display text-3xl font-bold text-[var(--color-text)]">
+            <dt className="text-4xl font-extrabold text-[var(--color-text)]">
               {stat.value}
               <span style={{ color: "var(--color-accent)" }}>{stat.suffix}</span>
             </dt>
-            <dd className="mt-1 text-sm text-[var(--color-text-muted)]">{stat.label}</dd>
+            <dd className="mt-1 font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">{stat.label}</dd>
           </div>
         ))}
       </dl>
+
+      <div className="rule mt-14 border-t">
+        {INDEX.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="rule group flex items-center justify-between border-b py-3 text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            <span className="flex items-center gap-4">
+              <span className="font-mono text-sm" style={{ color: "var(--color-accent)" }}>{item.n}</span>
+              <span className="text-lg font-semibold sm:text-xl">{item.label}</span>
+            </span>
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)]">
+              Scroll ↓
+            </span>
+          </a>
+        ))}
+      </div>
     </section>
   );
 }
