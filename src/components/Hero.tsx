@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
-import PhotoSlot from "./PhotoSlot";
+import InteractivePhoto from "./InteractivePhoto";
 import { profile } from "../data/content";
 
 const SOCIALS = [
@@ -29,11 +29,20 @@ export default function Hero() {
         </span>
       </div>
 
-      <h1 className="mt-6 text-[16vw] font-black leading-[0.85] tracking-tight text-[var(--color-text)] sm:text-8xl lg:text-9xl">
-        Pankaj
-        <br />
-        Kumar
-      </h1>
+      <div className="relative">
+        <h1 className="mt-6 text-[16vw] font-black leading-[0.85] tracking-tight text-[var(--color-text)] sm:text-8xl lg:text-9xl">
+          Pankaj
+          <br />
+          Kumar
+        </h1>
+
+        <div className="pointer-events-none absolute bottom-0 right-0 hidden w-40 translate-y-6 sm:block md:w-56 lg:w-64">
+          <div className="pointer-events-auto">
+            <InteractivePhoto className="aspect-[4/5]" />
+          </div>
+        </div>
+      </div>
+
       <div className="mt-5 h-2 w-24" style={{ backgroundColor: "var(--color-accent)" }} />
       <p className="mt-6 font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
         Senior Data Engineer — {profile.location}
@@ -67,8 +76,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="col-span-6 sm:col-span-2">
-          <PhotoSlot />
+        <div className="col-span-6 sm:hidden">
+          <InteractivePhoto className="aspect-[4/5]" />
         </div>
       </div>
 
