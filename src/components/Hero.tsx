@@ -1,6 +1,8 @@
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import InteractivePhoto from "./InteractivePhoto";
+import AnimatedNumber from "./AnimatedNumber";
+import LiveClock from "./LiveClock";
 import { profile } from "../data/content";
 
 const SOCIALS = [
@@ -21,8 +23,12 @@ const INDEX = [
 export default function Hero() {
   return (
     <section id="top" className="mx-auto max-w-6xl px-6 pb-20 pt-14 sm:pt-20">
-      <div className="animate-fade-up flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[var(--color-text-dim)]">
-        <span>Portfolio / {new Date().getFullYear()}</span>
+      <div className="animate-fade-up flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-[var(--color-text-dim)]">
+        <span className="flex items-center gap-3">
+          <span>Portfolio / {new Date().getFullYear()}</span>
+          <span className="hidden text-[var(--color-border-soft)] sm:inline">/</span>
+          <LiveClock className="hidden sm:inline" />
+        </span>
         <span className="flex items-center gap-2">
           <span className="pulse-dot h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--color-accent)" }} />
           Available for work
@@ -46,6 +52,9 @@ export default function Hero() {
       <div className="mt-5 h-2 w-24" style={{ backgroundColor: "var(--color-accent)" }} />
       <p className="mt-6 font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
         Senior Data Engineer — {profile.location}
+        <span className="pulse-dot ml-1" style={{ color: "var(--color-accent)" }}>
+          _
+        </span>
       </p>
 
       <div className="rule mt-10 grid grid-cols-12 gap-6 border-t pt-10">
@@ -85,7 +94,7 @@ export default function Hero() {
         {profile.stats.map((stat) => (
           <div key={stat.label}>
             <dt className="text-4xl font-extrabold text-[var(--color-text)]">
-              {stat.value}
+              <AnimatedNumber value={stat.value} suffix="" />
               <span style={{ color: "var(--color-accent)" }}>{stat.suffix}</span>
             </dt>
             <dd className="mt-1 font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">{stat.label}</dd>

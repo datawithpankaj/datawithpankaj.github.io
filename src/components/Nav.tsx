@@ -13,6 +13,7 @@ const LINKS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (!open) return;
@@ -21,8 +22,18 @@ export default function Nav() {
     return () => window.removeEventListener("resize", onResize);
   }, [open]);
 
+  useEffect(() => {
+    function onScroll() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="rule sticky top-0 z-50 border-b bg-[var(--color-bg)]">
+    <header className="sticky top-0 z-50 bg-[var(--color-bg)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="text-sm font-extrabold uppercase tracking-widest text-[var(--color-text)]">
           Pankaj Kumar
@@ -42,6 +53,13 @@ export default function Nav() {
         <button className="text-[var(--color-text)] md:hidden" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
+      </div>
+
+      <div className="relative h-px w-full" style={{ backgroundColor: "var(--color-border)" }} aria-hidden="true">
+        <div
+          className="absolute inset-y-0 left-0"
+          style={{ width: `${progress}%`, backgroundColor: "var(--color-accent)", transition: "width 100ms linear" }}
+        />
       </div>
 
       {open && (
