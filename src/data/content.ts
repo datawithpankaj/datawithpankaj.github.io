@@ -98,6 +98,7 @@ export type ExperienceEntry = {
   company: string;
   companyContext?: string;
   period: string;
+  stack: string[];
   bullets: string[];
 };
 
@@ -107,6 +108,7 @@ export const experience: ExperienceEntry[] = [
     company: "Harman India (HCS)",
     companyContext: "Projects: Convatec (Patient Platform), Lowe's (Price Optimisation & Strategy)",
     period: "Apr 2025 — Present",
+    stack: ["Azure Databricks", "Unity Catalog", "Kafka", "Snowflake", "BigQuery"],
     bullets: [
       "Architected a config-driven Bronze to Silver data-quality engine on Azure Databricks (Unity Catalog, Delta Lake, Workflows) for a healthcare RWE Lakehouse, pairing automated rule-based validation with incremental CDC/Delta MERGE. New clinical sources onboard through JSON config alone, reusing 90% of the code.",
       "Environment promotion and release automation for every data workflow run through Databricks Asset Bundles, Terraform-provisioned Azure infrastructure, and Azure DevOps across dev, test, and prod.",
@@ -121,6 +123,7 @@ export const experience: ExperienceEntry[] = [
     company: "Ernst & Young Private Limited",
     companyContext: "Client: HSBC Bank",
     period: "May 2023 — Apr 2025",
+    stack: ["Python", "BigQuery", "PySpark", "dbt", "Dataproc"],
     bullets: [
       "Built a metadata-driven model execution framework in Python, with variable derivation, calculation order, and source/target mappings held as config in BigQuery. Financial model migration time fell 20%.",
       "Migrated SAS-based financial models to GCP Dataproc using PySpark; processing times fell 30% and the legacy dependencies were retired.",
@@ -133,6 +136,7 @@ export const experience: ExperienceEntry[] = [
     company: "Capgemini Technology Services India Ltd.",
     companyContext: "Client: Rogers Communications",
     period: "Oct 2020 — May 2023",
+    stack: ["Azure Data Factory", "PySpark", "Databricks", "Medallion Architecture"],
     bullets: [
       "Ingested SAS, Oracle, and Hive sources into Azure Data Lake through orchestrated PySpark and Azure Data Factory pipelines, scaling to over 3 million daily incremental records with SCD Type 1/2 for 10M+ subscribers.",
       "Built subscriber churn analytics on Azure Databricks with medallion architecture (bronze/silver/gold), processing millions of daily CDRs to surface at-risk customers.",

@@ -1,20 +1,19 @@
 type SectionHeadingProps = {
-  index: string;
+  eyebrow: string;
   title: string;
-  subtitle?: string;
+  description?: string;
 };
 
-export default function SectionHeading({ index, title, subtitle }: SectionHeadingProps) {
+export default function SectionHeading({ eyebrow, title, description }: SectionHeadingProps) {
   return (
-    <div className="mb-10 flex items-center gap-4">
-      <span className="glass flex h-10 w-10 flex-none items-center justify-center rounded-full font-mono text-sm font-semibold">
-        <span className="gradient-text">{index}</span>
-      </span>
+    <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
       <div>
-        <h2 className="font-display text-2xl font-bold text-[var(--color-text)] sm:text-3xl">{title}</h2>
-        {subtitle && <p className="mt-1 text-sm text-[var(--color-text-muted)]">{subtitle}</p>}
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="font-display mt-2 text-3xl font-bold text-[var(--color-text)] sm:text-4xl">{title}</h2>
       </div>
-      <div className="ml-2 h-px flex-1 bg-[var(--color-glass-border)]" />
+      {description && (
+        <p className="max-w-xs text-sm text-[var(--color-text-muted)] sm:text-right">{description}</p>
+      )}
     </div>
   );
 }

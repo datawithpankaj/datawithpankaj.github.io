@@ -3,8 +3,7 @@ import SectionHeading from "./SectionHeading";
 import { skillGroups } from "../data/content";
 
 // Bento sizing, keyed by group label — sized roughly to each group's item
-// count so the grid reads as intentional rather than uniform rows. GenAI is
-// called out as the featured/differentiating tile.
+// count so the grid reads as intentional rather than uniform rows.
 const SPAN: Record<string, string> = {
   "Programming": "sm:col-span-1",
   "Databricks & Streaming": "sm:col-span-2",
@@ -21,12 +20,12 @@ export default function Skills() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
-      <SectionHeading index="02" title="Skills & Tools" subtitle="Grouped the way I actually use them" />
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
+      <SectionHeading eyebrow="Skills" title="What I work with" description="Grouped the way I actually use them, not an alphabetical keyword dump." />
 
       <div
         ref={ref}
-        className={`grid grid-cols-1 gap-5 transition-all duration-700 sm:grid-cols-4 ${
+        className={`grid grid-cols-1 gap-4 transition-all duration-700 sm:grid-cols-4 ${
           visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
@@ -35,19 +34,17 @@ export default function Skills() {
           return (
             <div
               key={group.label}
-              className={`glass-hover rounded-3xl p-6 ${SPAN[group.label] ?? "sm:col-span-1"} ${
-                featured ? "gradient-border" : "glass"
+              className={`card p-6 ${SPAN[group.label] ?? "sm:col-span-1"} ${
+                featured ? "border-2" : "card-hover"
               }`}
+              style={featured ? { borderColor: "var(--color-accent)" } : undefined}
             >
-              <h3 className={`font-display text-sm font-semibold ${featured ? "gradient-text" : "text-[var(--color-accent-2)]"}`}>
+              <h3 className="font-display text-sm font-semibold" style={{ color: featured ? "var(--color-accent)" : "var(--color-text)" }}>
                 {group.label}
               </h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="glass rounded-full px-3 py-1 font-mono text-xs text-[var(--color-text-muted)]"
-                  >
+                  <span key={item} className="tag px-3 py-1 font-mono text-xs text-[var(--color-text-muted)]">
                     {item}
                   </span>
                 ))}

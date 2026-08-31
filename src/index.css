@@ -1,25 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-bg: #05050b;
-  --color-text: #f2f3f7;
-  --color-text-muted: #a2a7ba;
-  --color-text-dim: #686e80;
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-border: #e4e4e7;
+  --color-border-hover: #a1a1aa;
 
-  --color-glass: #ffffff0a;
-  --color-glass-strong: #ffffff12;
-  --color-glass-border: #ffffff17;
-  --color-glass-border-hover: #ffffff30;
+  --color-text: #0a0a0a;
+  --color-text-muted: #52525b;
+  --color-text-dim: #a1a1aa;
 
-  --color-accent: #a78bfa;
-  --color-accent-2: #22d3ee;
-  --color-accent-3: #f472b6;
-  --color-accent-soft: #a78bfa22;
+  --color-accent: #4338ca;
+  --color-accent-soft: #4338ca14;
+  --color-status: #16a34a;
 }
 
 html {
@@ -34,104 +32,78 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: #05050b;
+  color: #fafaf9;
 }
 
 .font-display {
   font-family: var(--font-display);
 }
 
-.glass {
-  background-color: var(--color-glass);
-  border: 1px solid var(--color-glass-border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.glass-strong {
-  background-color: var(--color-glass-strong);
-  border: 1px solid var(--color-glass-border);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-.glass-hover {
-  transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-}
-
-.glass-hover:hover {
-  border-color: var(--color-glass-border-hover);
-  background-color: var(--color-glass-strong);
-}
-
-.gradient-text {
-  background-image: linear-gradient(100deg, var(--color-accent) 10%, var(--color-accent-2) 55%, var(--color-accent-3) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
+/* Solid/outline duotone name treatment for the hero */
+.text-outline {
   color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-text);
+  text-stroke: 1.5px var(--color-text);
 }
 
-.gradient-fill {
-  background-image: linear-gradient(100deg, var(--color-accent), var(--color-accent-2));
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
 }
 
-/* Two-layer trick: gradient padding-box border on a dark surface, no extra wrapper markup needed */
-.gradient-border {
-  position: relative;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-    linear-gradient(120deg, var(--color-accent), var(--color-accent-2), var(--color-accent-3)) border-box;
+.pill {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Light glass surfaces — deliberate bright moments against the dark aurora
-   base, used sparingly (CTA banner, Toptal strip) rather than as a mode. */
-.glass-light {
-  background-color: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+.pill:hover {
+  border-color: var(--color-border-hover);
 }
 
-.light-band {
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+.pill-solid {
+  border-radius: 999px;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-@keyframes drift-a {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60px, 80px) scale(1.1); }
+.pill-solid:hover {
+  transform: translateY(-1px);
+  opacity: 0.88;
 }
 
-@keyframes drift-b {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-70px, 40px) scale(0.92); }
+.tag {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-@keyframes drift-c {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, -60px) scale(1.06); }
+.tag:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-.animate-drift-a {
-  animation: drift-a 24s ease-in-out infinite;
+.card {
+  border-radius: 1.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.animate-drift-b {
-  animation: drift-b 28s ease-in-out infinite;
-}
-
-.animate-drift-c {
-  animation: drift-c 22s ease-in-out infinite;
+.card-hover:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: 0 20px 40px -20px rgba(10, 10, 10, 0.12);
 }
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50% { opacity: 0.35; }
 }
 
 .pulse-dot {
@@ -148,7 +120,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-drift-a, .animate-drift-b, .animate-drift-c, .pulse-dot {
+  .pulse-dot {
     animation: none;
   }
 }
