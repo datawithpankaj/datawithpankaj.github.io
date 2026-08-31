@@ -42,8 +42,8 @@ export default function Services() {
         })}
       </div>
 
-      <div className="gradient-border mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl p-6 sm:flex-row sm:items-center">
-        <p className="text-[var(--color-text)]">
+      <div className="glass-light mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl p-6 sm:flex-row sm:items-center">
+        <p className="font-display text-lg font-semibold text-slate-900">
           Have a data engineering problem to solve? Let's talk about scope, timeline, and fit.
         </p>
         <a

@@ -84,6 +84,24 @@ body {
     linear-gradient(120deg, var(--color-accent), var(--color-accent-2), var(--color-accent-3)) border-box;
 }
 
+/* Light glass surfaces — deliberate bright moments against the dark aurora
+   base, used sparingly (CTA banner, Toptal strip) rather than as a mode. */
+.glass-light {
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+}
+
+.light-band {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
 @keyframes drift-a {
   0%, 100% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(60px, 80px) scale(1.1); }

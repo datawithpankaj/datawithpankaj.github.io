@@ -24,7 +24,7 @@ export default function App() {
           <Projects />
           <Services />
           <Contact />
-          <section className="flex justify-center border-t border-[var(--color-glass-border)] py-12">
+          <section className="light-band flex justify-center py-16">
             <ToptalBadge />
           </section>
         </main>
