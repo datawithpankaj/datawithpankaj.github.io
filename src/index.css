@@ -17,6 +17,48 @@
   --color-accent-soft: #e0301e12;
 }
 
+:root {
+  --color-shadow-photo: rgba(17, 17, 17, 0.28);
+  color-scheme: light;
+}
+
+/* Dark palette — same flat Swiss language, inverted. Applies when the
+   visitor's system prefers dark and they haven't manually chosen light,
+   or whenever the toggle sets data-theme="dark" explicitly. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #131311;
+    --color-text: #f4f3ef;
+    --color-text-muted: #b3b1a7;
+    --color-text-dim: #726f65;
+
+    --color-border: #f4f3ef;
+    --color-border-soft: #38362f;
+
+    --color-accent: #ff4d3a;
+    --color-accent-soft: #ff4d3a1f;
+
+    --color-shadow-photo: rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #131311;
+  --color-text: #f4f3ef;
+  --color-text-muted: #b3b1a7;
+  --color-text-dim: #726f65;
+
+  --color-border: #f4f3ef;
+  --color-border-soft: #38362f;
+
+  --color-accent: #ff4d3a;
+  --color-accent-soft: #ff4d3a1f;
+
+  --color-shadow-photo: rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -25,6 +67,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {
