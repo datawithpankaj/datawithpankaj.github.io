@@ -111,11 +111,6 @@ export default function Contact() {
           {status === "error" && (
             <p className="mt-3 text-sm text-red-600">Something went wrong — email me directly at {profile.email}.</p>
           )}
-          {!FORM_ENDPOINT && (
-            <p className="mt-3 text-xs text-[var(--color-text-dim)]">
-              Submitting opens your email client (form backend not yet configured — see README).
-            </p>
-          )}
         </form>
       </div>
     </section>

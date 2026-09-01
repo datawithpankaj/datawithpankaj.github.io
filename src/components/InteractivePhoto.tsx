@@ -43,7 +43,7 @@ export default function InteractivePhoto({ className = "" }: InteractivePhotoPro
         alt="Pankaj Kumar"
         draggable={false}
         className="h-full w-full select-none object-contain object-bottom"
-        style={{ filter: "drop-shadow(0 24px 32px var(--color-shadow-photo))" }}
+        style={{ filter: "grayscale(1) contrast(1.12) drop-shadow(0 24px 32px var(--color-shadow-photo))" }}
       />
     </div>
   );
