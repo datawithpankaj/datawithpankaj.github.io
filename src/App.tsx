@@ -2,9 +2,9 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
+import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Education from "./components/Education";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import ToptalBadge from "./components/ToptalBadge";
@@ -18,9 +18,9 @@ export default function App() {
         <Hero />
         <About />
         <Experience />
+        <Education />
         <Skills />
         <Projects />
-        <Education />
         <Services />
         <Contact />
         <section className="rule flex justify-center border-t py-14">
