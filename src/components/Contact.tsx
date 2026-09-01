@@ -57,11 +57,11 @@ export default function Contact() {
         <div className="col-span-12 sm:col-span-4">
           <p className="text-[var(--color-text-muted)]">
             Whether it's a freelance data engineering project, a full-time role, or a question
-            about something I built — I read every message.
+            about something I built, I read every message.
           </p>
 
           <div className="mt-8 space-y-4">
-            <a href={`mailto:${profile.email}`} className="link-underline flex items-center gap-3 text-[var(--color-text)]">
+            <a href={`mailto:${profile.email}`} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
               <Mail size={18} />
               <span className="font-mono text-sm">{profile.email}</span>
             </a>
@@ -105,11 +105,11 @@ export default function Contact() {
 
           {status === "sent" && (
             <p className="mt-3 text-sm" style={{ color: "var(--color-accent)" }}>
-              Thanks — message sent. I'll get back to you soon.
+              Thanks, message sent. I'll get back to you soon.
             </p>
           )}
           {status === "error" && (
-            <p className="mt-3 text-sm text-red-600">Something went wrong — email me directly at {profile.email}.</p>
+            <p className="mt-3 text-sm text-red-600">Something went wrong. Email me directly at {profile.email}.</p>
           )}
         </form>
       </div>

@@ -22,7 +22,7 @@ export default function Education() {
             <span className="font-mono text-sm text-[var(--color-text-dim)]">{education.period}</span>
           </div>
           <p className="mt-1 text-[var(--color-text-muted)]">
-            {education.school} — {education.note}
+            {education.school}, {education.note}
           </p>
         </div>
       </div>

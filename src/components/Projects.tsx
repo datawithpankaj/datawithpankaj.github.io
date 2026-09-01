@@ -9,7 +9,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHeading number="04" title="Work" description="Personal projects, added as they ship — edit src/data/content.ts to add yours." />
+      <SectionHeading number="04" title="Work" />
 
       <div
         ref={ref}

@@ -27,7 +27,7 @@ export default function Experience() {
               </div>
               <p className="mt-1 text-[var(--color-text-muted)]">
                 {job.company}
-                {job.companyContext ? ` — ${job.companyContext}` : ""}
+                {job.companyContext ? ` · ${job.companyContext}` : ""}
               </p>
 
               <ul className="mt-5 space-y-2.5">

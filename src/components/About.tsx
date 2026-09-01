@@ -17,7 +17,7 @@ export default function About() {
           <p className="text-lg leading-relaxed text-[var(--color-text-muted)]">
             I'm a Senior Data Engineer based in {profile.location}, with nearly six years spent
             designing and running Lakehouse platforms, streaming pipelines, and data warehouses
-            for regulated industries — healthcare, banking, and telecom.
+            for regulated industries: healthcare, banking, and telecom.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-[var(--color-text-muted)]">
             My work sits at the intersection of scale and reliability: pipelines processing
@@ -27,8 +27,8 @@ export default function About() {
             day-to-day engineering work rather than treating it as a separate track.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-[var(--color-text-muted)]">
-            Outside client work, I'm building out personal Lakehouse and GenAI-on-data projects —
-            more on that in the Work section below.
+            Outside client work, I'm building out personal Lakehouse and GenAI-on-data projects.
+            More on that in the Work section below.
           </p>
         </div>
 

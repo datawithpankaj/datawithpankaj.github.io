@@ -107,7 +107,7 @@ export const experience: ExperienceEntry[] = [
     role: "Senior Data Engineer",
     company: "Harman India (HCS)",
     companyContext: "Projects: Convatec (Patient Platform), Lowe's (Price Optimisation & Strategy)",
-    period: "Apr 2025 — Present",
+    period: "Apr 2025 - Present",
     stack: ["Azure Databricks", "Unity Catalog", "Kafka", "Snowflake", "BigQuery"],
     bullets: [
       "Architected a config-driven Bronze to Silver data-quality engine on Azure Databricks (Unity Catalog, Delta Lake, Workflows) for a healthcare RWE Lakehouse, pairing automated rule-based validation with incremental CDC/Delta MERGE. New clinical sources onboard through JSON config alone, reusing 90% of the code.",
@@ -122,7 +122,7 @@ export const experience: ExperienceEntry[] = [
     role: "Data Engineer",
     company: "Ernst & Young Private Limited",
     companyContext: "Client: HSBC Bank",
-    period: "May 2023 — Apr 2025",
+    period: "May 2023 - Apr 2025",
     stack: ["Python", "BigQuery", "PySpark", "dbt", "Dataproc"],
     bullets: [
       "Built a metadata-driven model execution framework in Python, with variable derivation, calculation order, and source/target mappings held as config in BigQuery. Financial model migration time fell 20%.",
@@ -135,7 +135,7 @@ export const experience: ExperienceEntry[] = [
     role: "Data Engineer",
     company: "Capgemini Technology Services India Ltd.",
     companyContext: "Client: Rogers Communications",
-    period: "Oct 2020 — May 2023",
+    period: "Oct 2020 - May 2023",
     stack: ["Azure Data Factory", "PySpark", "Databricks", "Medallion Architecture"],
     bullets: [
       "Ingested SAS, Oracle, and Hive sources into Azure Data Lake through orchestrated PySpark and Azure Data Factory pipelines, scaling to over 3 million daily incremental records with SCD Type 1/2 for 10M+ subscribers.",
@@ -163,7 +163,7 @@ export const education = {
   degree: "Bachelor of Engineering in Computer Science",
   note: "Big Data Analytics specialization by IBM",
   school: "Chandigarh University",
-  period: "2016 — 2020",
+  period: "2016 - 2020",
 };
 
 export type Project = {
@@ -191,7 +191,7 @@ export const services = [
   {
     title: "Lakehouse Builds",
     description:
-      "End-to-end Lakehouse architecture on Databricks or Snowflake — medallion design, Delta Lake, Unity Catalog governance, from raw ingestion to analytics-ready marts.",
+      "End-to-end Lakehouse architecture on Databricks or Snowflake: medallion design, Delta Lake, Unity Catalog governance, from raw ingestion to analytics-ready marts.",
   },
   {
     title: "Pipeline Migration & Modernization",
@@ -201,17 +201,17 @@ export const services = [
   {
     title: "Real-Time Streaming",
     description:
-      "Kafka and Spark Structured Streaming pipelines for high-volume, low-latency event processing — built and tuned to run reliably at scale.",
+      "Kafka and Spark Structured Streaming pipelines for high-volume, low-latency event processing. Built and tuned to run reliably at scale.",
   },
   {
     title: "Data Quality & Governance",
     description:
-      "Config-driven data quality frameworks, RBAC, PII controls, and lineage — built for regulated environments like healthcare and banking.",
+      "Config-driven data quality frameworks, RBAC, PII controls, and lineage. Built for regulated environments like healthcare and banking.",
   },
   {
     title: "dbt & Analytics Engineering",
     description:
-      "Modular, tested, version-controlled dbt models with incremental materializations — staging to marts, audit-ready.",
+      "Modular, tested, version-controlled dbt models with incremental materializations, staging to marts, audit-ready.",
   },
   {
     title: "GenAI-Assisted Data Workflows",

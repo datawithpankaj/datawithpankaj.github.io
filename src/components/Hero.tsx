@@ -51,7 +51,7 @@ export default function Hero() {
 
       <div className="mt-5 h-2 w-24" style={{ backgroundColor: "var(--color-accent)" }} />
       <p className="mt-6 font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
-        Senior Data Engineer — {profile.location}
+        Senior Data Engineer · {profile.location}
         <span className="pulse-dot ml-1" style={{ color: "var(--color-accent)" }}>
           _
         </span>
@@ -73,7 +73,7 @@ export default function Hero() {
                 <a
                   key={label}
                   href={href}
-                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  target="_blank"
                   rel="noreferrer"
                   aria-label={label}
                   className="text-[var(--color-text)] hover:text-[var(--color-accent)]"
