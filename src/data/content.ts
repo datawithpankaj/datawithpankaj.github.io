@@ -53,6 +53,7 @@ export const skillGroups: SkillGroup[] = [
       "Cloud Composer",
       "Cloud Pub/Sub",
       "Hadoop",
+      "Hive",
       "Snowflake",
     ],
   },
@@ -90,6 +91,8 @@ export const skillGroups: SkillGroup[] = [
       "Azure DevOps",
       "Terraform",
       "Unix Shell",
+      "Maven",
+      "Autosys",
       "CI/CD",
     ],
   },
@@ -110,11 +113,26 @@ export const experience: ExperienceEntry[] = [
     company: "Wells Fargo",
     companyContext: "Senior Assistant Vice President",
     period: "Sep 2026 - Present",
-    stack: ["GCP BigQuery", "Hadoop", "Cloud Pub/Sub", "Apache Airflow"],
+    stack: [
+      "Python",
+      "PySpark",
+      "SQL",
+      "GCP BigQuery",
+      "Dataproc",
+      "Hadoop",
+      "Hive",
+      "Cloud Pub/Sub",
+      "Apache Airflow",
+      "Maven",
+      "Autosys",
+      "Unix Shell",
+      "PII Handling",
+    ],
     bullets: [
       "Led migration of regulated financial datasets from an on-premises Hadoop data lake to GCP BigQuery, building a metadata-driven framework that reads table definitions from a central metastore to auto-generate ingestion pipelines, removing per-table pipeline development.",
       "Designed an event-driven orchestration layer where Pub/Sub messages trigger a router Airflow DAG that inspects message metadata and dynamically triggers the correct downstream ingestion DAG, replacing one-DAG-per-source scheduling with a single scalable dispatch pattern.",
       "Implemented incremental, watermark-based load strategies across migrated pipelines to keep BigQuery datasets current without full table reloads.",
+      "Enforced PII handling and data-access policies across Dataproc Hadoop/Hive clusters, with Maven-built Spark jobs scheduled through Autosys and Unix shell wrappers for legacy on-prem batch workflows.",
     ],
   },
   {
@@ -180,6 +198,11 @@ export const education = {
   period: "2016 - 2020",
 };
 
+export type ProjectKpi = {
+  label: string;
+  value: string;
+};
+
 export type Project = {
   title: string;
   description: string;
@@ -187,11 +210,45 @@ export type Project = {
   link?: string;
   repo?: string;
   comingSoon?: boolean;
+  // Optional deeper case-study content, shown behind a "Details" toggle on
+  // the card instead of cluttering the default compact view.
+  highlights?: string[];
+  kpis?: ProjectKpi[];
+  learned?: string[];
 };
 
 // Personal projects go here. Each card renders from this array —
 // add an entry (with a real link/repo) and it shows up on the site automatically.
 export const projects: Project[] = [
+  {
+    title: "Real-Time Lakehouse: Kafka + Debezium + Spark CDC Pipeline",
+    description:
+      "An end-to-end ingestion platform unifying batch, streaming, and CDC into one Medallion lakehouse. Debezium captures every Postgres change via the write-ahead log; Spark Structured Streaming merges it into Delta Lake with idempotent, LSN-ordered upserts.",
+    tags: ["PostgreSQL", "Debezium", "Kafka", "Spark Structured Streaming", "Delta Lake", "Airflow", "Docker Compose"],
+    highlights: [
+      "Deduplicates same-row updates within each CDC micro-batch using Postgres LSN (falling back to Kafka offset during the initial snapshot), so Delta MERGE never sees multiple matches for one key.",
+      "REPLICA IDENTITY FULL plus the raw Debezium envelope preserved end-to-end, so before/after images, deletes, and Kafka tombstones all parse correctly instead of silently becoming null rows.",
+      "Bronze ingestion, the Silver merge, and the clickstream jobs run as isolated Spark applications with separate checkpoints, so a bug or backlog in merge logic never blocks raw data from landing.",
+      "A custom data-quality framework runs null, uniqueness, referential-integrity, range, and row-count checks; error-level failures fail the Airflow task before bad data reaches Gold.",
+      "Every storage path is an s3a:// URI, so moving from MinIO to AWS S3, ADLS, or GCS is a config change, not a code change.",
+    ],
+    kpis: [
+      { label: "Ingestion paradigms unified", value: "3 (batch, streaming, CDC)" },
+      { label: "Source tables via CDC", value: "4" },
+      { label: "Medallion layers / Gold marts", value: "3 layers / 4 marts" },
+      { label: "Streaming micro-batch interval", value: "10s (configurable)" },
+      { label: "Kafka topics / max partitions", value: "5 / 6" },
+      { label: "Automated tests", value: "16" },
+      { label: "Airflow DAGs", value: "3" },
+      { label: "Containerized services", value: "~19" },
+      { label: "Codebase", value: "~1,500 LOC / 40+ modules" },
+    ],
+    learned: [
+      "Exactly-once-style correctness comes from idempotent merges and deterministic ordering, not the transport layer.",
+      "How Postgres logical decoding, replication slots, and the WAL actually work.",
+      "The trade-offs in decimal handling, envelope unwrapping, and running streaming jobs under a scheduler built for finite tasks.",
+    ],
+  },
   {
     title: "More projects coming soon",
     description:
