@@ -51,6 +51,8 @@ export const skillGroups: SkillGroup[] = [
       "GCP BigQuery",
       "Dataproc",
       "Cloud Composer",
+      "Cloud Pub/Sub",
+      "Hadoop",
       "Snowflake",
     ],
   },
@@ -105,9 +107,21 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     role: "Senior Data Engineer",
+    company: "Wells Fargo",
+    companyContext: "Senior Assistant Vice President",
+    period: "Sep 2026 - Present",
+    stack: ["GCP BigQuery", "Hadoop", "Cloud Pub/Sub", "Apache Airflow"],
+    bullets: [
+      "Led migration of regulated financial datasets from an on-premises Hadoop data lake to GCP BigQuery, building a metadata-driven framework that reads table definitions from a central metastore to auto-generate ingestion pipelines, removing per-table pipeline development.",
+      "Designed an event-driven orchestration layer where Pub/Sub messages trigger a router Airflow DAG that inspects message metadata and dynamically triggers the correct downstream ingestion DAG, replacing one-DAG-per-source scheduling with a single scalable dispatch pattern.",
+      "Implemented incremental, watermark-based load strategies across migrated pipelines to keep BigQuery datasets current without full table reloads.",
+    ],
+  },
+  {
+    role: "Senior Data Engineer",
     company: "Harman India (HCS)",
     companyContext: "Projects: Convatec (Patient Platform), Lowe's (Price Optimisation & Strategy)",
-    period: "Apr 2025 - Present",
+    period: "Apr 2025 - Aug 2026",
     stack: ["Azure Databricks", "Unity Catalog", "Kafka", "Snowflake", "BigQuery"],
     bullets: [
       "Architected a config-driven Bronze to Silver data-quality engine on Azure Databricks (Unity Catalog, Delta Lake, Workflows) for a healthcare RWE Lakehouse, pairing automated rule-based validation with incremental CDC/Delta MERGE. New clinical sources onboard through JSON config alone, reusing 90% of the code.",

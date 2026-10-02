@@ -10,7 +10,7 @@ export default function Experience() {
       <SectionHeading
         number="02"
         title="Experience"
-        description="Nearly six years across a Big Four consultancy, an IT services major, and a product-adjacent healthcare/retail team."
+        description="Nearly six years across a global bank, a Big Four consultancy, an IT services major, and a product-adjacent healthcare/retail team."
       />
 
       <div ref={ref} className={`rule border-t transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}>
