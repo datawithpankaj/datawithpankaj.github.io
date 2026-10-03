@@ -210,6 +210,10 @@ export type Project = {
   link?: string;
   repo?: string;
   comingSoon?: boolean;
+  // A short, visible honesty caveat — e.g. "validated but never run against
+  // live infrastructure." Shown directly under the description, not buried
+  // in the expandable detail, so it's never missed.
+  status?: string;
   // Optional deeper case-study content, shown behind a "Details" toggle on
   // the card instead of cluttering the default compact view.
   highlights?: string[];
@@ -247,6 +251,30 @@ export const projects: Project[] = [
       "Exactly-once-style correctness comes from idempotent merges and deterministic ordering, not the transport layer.",
       "How Postgres logical decoding, replication slots, and the WAL actually work.",
       "The trade-offs in decimal handling, envelope unwrapping, and running streaming jobs under a scheduler built for finite tasks.",
+    ],
+  },
+  {
+    title: "Healthcare Unified Revenue Metrics Pipeline",
+    description:
+      "A Snowflake-on-AWS dbt platform unifying hospital billing, subscription revenue, CRM, legacy warehouse, and FX data into governed monthly ARR, NRR, and MRR metrics, with a three-lineage identity-resolved customer dimension and SCD Type 2 history.",
+    status:
+      "Structurally validated (dbt parse + compile clean across 17 models, dependencies resolved) via a clean-room install — not yet run against a live Snowflake warehouse or real data. See VALIDATION.md in the repo for exactly what was and wasn't checked.",
+    tags: ["Snowflake", "dbt", "AWS", "Airflow", "MetricFlow", "Fivetran", "ECS Fargate"],
+    highlights: [
+      "Unifies five source systems (Salesforce CRM, SAP billing, subscription platform, Teradata legacy warehouse, FX API) via Fivetran CDC, S3 + Snowpipe, and Lambda/EventBridge into a layered dbt project (staging to intermediate to marts).",
+      "Three-lineage customer dimension (CRM, legacy, subscription-only) reconciled with deterministic surrogate keys and crosswalk fields to prevent duplicate customers and orphaned revenue.",
+      "ARR bridge classifies monthly movements (new, reactivation, expansion, contraction, renewal, churn) with SQL window functions, multi-currency FX normalization to USD, and governed MetricFlow metrics for ARR, NRR, MRR, and churn.",
+      "SCD Type 2 snapshots preserve point-in-time customer/contract history; incremental MERGE models handle late-arriving corrections with 5-day and 3-month reprocessing windows plus a weekly full-refresh recovery job.",
+      "Orchestrated via Amazon MWAA/Airflow and ECS Fargate, with GitHub Actions CI running SQLFluff linting, Slim CI, and ephemeral PR schemas; Snowflake RBAC, PII masking, and resource monitors enforce governance.",
+      "Validation caught three real bugs before any warehouse was involved: an invalid package version pin, a deprecated dbt package, and three MetricFlow schema violations (missing metric labels, derived metrics referencing raw measures instead of metrics, a missing time-spine model).",
+    ],
+    kpis: [
+      { label: "Source systems unified", value: "5" },
+      { label: "dbt models", value: "17" },
+      { label: "Data tests", value: "115" },
+      { label: "Metrics / semantic models", value: "10 / 1" },
+      { label: "Snapshots", value: "2" },
+      { label: "Bugs caught by validation", value: "3" },
     ],
   },
   {

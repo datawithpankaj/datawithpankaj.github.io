@@ -40,6 +40,12 @@ export default function Projects() {
               <h3 className="mt-4 text-lg font-bold text-[var(--color-text)]">{project.title}</h3>
               <p className="mt-2 max-w-3xl text-sm text-[var(--color-text-muted)]">{project.description}</p>
 
+              {project.status && (
+                <p className="mt-2 max-w-3xl font-mono text-xs" style={{ color: "var(--color-accent)" }}>
+                  {project.status}
+                </p>
+              )}
+
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span key={tag} className="tag px-2 py-0.5 text-xs text-[var(--color-text-dim)]">
