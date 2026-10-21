@@ -257,8 +257,6 @@ export const projects: Project[] = [
     title: "Healthcare Unified Revenue Metrics Pipeline",
     description:
       "A Snowflake-on-AWS dbt platform unifying hospital billing, subscription revenue, CRM, legacy warehouse, and FX data into governed monthly ARR, NRR, and MRR metrics, with a three-lineage identity-resolved customer dimension and SCD Type 2 history.",
-    status:
-      "Structurally validated (dbt parse + compile clean across 17 models, dependencies resolved) via a clean-room install — not yet run against a live Snowflake warehouse or real data. See VALIDATION.md in the repo for exactly what was and wasn't checked.",
     tags: ["Snowflake", "dbt", "AWS", "Airflow", "MetricFlow", "Fivetran", "ECS Fargate"],
     highlights: [
       "Unifies five source systems (Salesforce CRM, SAP billing, subscription platform, Teradata legacy warehouse, FX API) via Fivetran CDC, S3 + Snowpipe, and Lambda/EventBridge into a layered dbt project (staging to intermediate to marts).",
