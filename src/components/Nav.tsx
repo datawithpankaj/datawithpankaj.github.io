@@ -15,6 +15,7 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -27,6 +28,7 @@ export default function Nav() {
     function onScroll() {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+      setScrolled(window.scrollY > 8);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -34,7 +36,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--color-bg)]">
+    <header className={`sticky top-0 z-50 transition-colors duration-300 ${scrolled ? "glass" : ""}`}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="text-sm font-extrabold uppercase tracking-widest text-[var(--color-text)]">
           Pankaj Kumar
@@ -46,7 +48,7 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
-          <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-solid px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+          <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-primary rounded-full px-4 py-2 text-xs uppercase tracking-wide">
             Resume
           </a>
           <ThemeToggle />
@@ -63,19 +65,23 @@ export default function Nav() {
       <div className="relative h-px w-full" style={{ backgroundColor: "var(--color-border)" }} aria-hidden="true">
         <div
           className="absolute inset-y-0 left-0"
-          style={{ width: `${progress}%`, backgroundColor: "var(--color-accent)", transition: "width 100ms linear" }}
+          style={{
+            width: `${progress}%`,
+            backgroundImage: "linear-gradient(90deg, var(--color-accent), var(--color-accent-2))",
+            transition: "width 100ms linear",
+          }}
         />
       </div>
 
       {open && (
-        <div className="rule border-t px-6 py-5 md:hidden">
+        <div className="glass border-t border-[var(--color-border)] px-6 py-5 md:hidden">
           <div className="flex flex-col gap-4">
             {LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="text-sm text-[var(--color-text)]">
                 {link.label}
               </a>
             ))}
-            <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-solid w-fit px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+            <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-primary w-fit rounded-full px-4 py-2 text-xs uppercase tracking-wide">
               Resume
             </a>
           </div>

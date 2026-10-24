@@ -9,14 +9,13 @@ const HOVER_SELECTOR = "a, button, input, textarea, [role='button']";
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
+  const [active] = useState(() => window.matchMedia("(pointer: fine)").matches);
   const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     document.documentElement.classList.add("custom-cursor");
-    setActive(true);
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

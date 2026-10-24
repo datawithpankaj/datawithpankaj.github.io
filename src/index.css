@@ -5,83 +5,74 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-bg: #f4f3ef;
-  --color-text: #111111;
-  --color-text-muted: #55534d;
-  --color-text-dim: #8a887f;
+  --color-bg: #0a0a0f;
+  --color-surface: #131319;
+  --color-surface-2: #1a1a22;
 
-  --color-border: #111111;
-  --color-border-soft: #d8d6cd;
+  --color-text: #f5f5f7;
+  --color-text-muted: #9a9aa8;
+  --color-text-dim: #5c5c6b;
 
-  --color-accent: #e0301e;
-  --color-accent-soft: #e0301e12;
+  --color-border: #ffffff16;
+  --color-border-strong: #ffffff2e;
 
-  /* Bold color-blocking palette — used deliberately, not everywhere:
-     stat tiles, section numerals (cycled), status badges, CTA blocks. */
-  --color-red: #e0301e;
-  --color-blue: #2563eb;
-  --color-yellow: #ffb800;
-  --color-green: #16a34a;
+  --color-accent: #8b5cf6;
+  --color-accent-2: #22d3ee;
+  --color-accent-soft: #8b5cf61a;
+  --color-amber: #f59e0b;
+  --color-green: #34d399;
 }
 
 :root {
-  --color-shadow-photo: rgba(17, 17, 17, 0.28);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
-/* Dark palette — same flat Swiss language, inverted. Applies when the
-   visitor's system prefers dark and they haven't manually chosen light,
-   or whenever the toggle sets data-theme="dark" explicitly. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg: #131311;
-    --color-text: #f4f3ef;
-    --color-text-muted: #b3b1a7;
-    --color-text-dim: #726f65;
+/* Light mode — a simpler, flatter variant of the same system. The dark
+   version above is the primary/designed-for experience. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-bg: #fafafa;
+    --color-surface: #ffffff;
+    --color-surface-2: #f2f2f5;
 
-    --color-border: #f4f3ef;
-    --color-border-soft: #38362f;
+    --color-text: #0a0a0f;
+    --color-text-muted: #55555f;
+    --color-text-dim: #9a9aa5;
 
-    --color-accent: #ff4d3a;
-    --color-accent-soft: #ff4d3a1f;
+    --color-border: #00000014;
+    --color-border-strong: #00000026;
 
-    --color-red: #ff4d3a;
-    --color-blue: #5b8def;
-    --color-yellow: #ffc94d;
-    --color-green: #34d399;
+    --color-accent: #7c3aed;
+    --color-accent-2: #0891b2;
+    --color-accent-soft: #7c3aed14;
 
-    --color-shadow-photo: rgba(0, 0, 0, 0.55);
-    color-scheme: dark;
+    color-scheme: light;
   }
 }
 
-:root[data-theme="dark"] {
-  --color-bg: #131311;
-  --color-text: #f4f3ef;
-  --color-text-muted: #b3b1a7;
-  --color-text-dim: #726f65;
+:root[data-theme="light"] {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f2f5;
 
-  --color-border: #f4f3ef;
-  --color-border-soft: #38362f;
+  --color-text: #0a0a0f;
+  --color-text-muted: #55555f;
+  --color-text-dim: #9a9aa5;
 
-  --color-accent: #ff4d3a;
-  --color-accent-soft: #ff4d3a1f;
+  --color-border: #00000014;
+  --color-border-strong: #00000026;
 
-  --color-red: #ff4d3a;
-  --color-blue: #5b8def;
-  --color-yellow: #ffc94d;
-  --color-green: #34d399;
+  --color-accent: #7c3aed;
+  --color-accent-2: #0891b2;
+  --color-accent-soft: #7c3aed14;
 
-  --color-shadow-photo: rgba(0, 0, 0, 0.55);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Only hides the native cursor once CustomCursor has confirmed a fine
-   pointer and mounted its own dot/ring — never on touch devices. */
 @media (pointer: fine) {
   html.custom-cursor,
   html.custom-cursor * {
@@ -93,12 +84,12 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background-color: var(--color-accent);
-  color: #f4f3ef;
+  color: #fff;
 }
 
 .eyebrow {
@@ -109,63 +100,66 @@ body {
   color: var(--color-text-dim);
 }
 
-/* Oversized poster-style section numeral, hollow outline */
-.numeral {
-  font-weight: 800;
+.gradient-text {
+  background-image: linear-gradient(100deg, var(--color-text) 20%, var(--color-accent) 60%, var(--color-accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-border);
-  text-stroke: 1.5px var(--color-border);
-  line-height: 0.8;
-  letter-spacing: 0.04em;
 }
 
-.rule {
-  border-top: 1px solid var(--color-border);
+.glass {
+  background-color: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-.rule-soft {
-  border-top: 1px solid var(--color-border-soft);
+.glow-accent {
+  box-shadow: 0 0 0 1px var(--color-border), 0 20px 60px -20px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
-/* Flat, square-cornered tag — no pill chrome */
+.btn-primary {
+  background-image: linear-gradient(100deg, var(--color-accent), var(--color-accent-2));
+  color: #0a0a0f;
+  font-weight: 600;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.btn-ghost {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  background-color: transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-accent);
+}
+
 .tag {
   border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   font-family: var(--font-mono);
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 .tag:hover {
-  background-color: var(--color-border);
-  color: var(--color-bg);
-}
-
-.btn-solid {
-  background-color: var(--color-red);
-  color: #fff;
-  transition: background-color 0.15s ease, transform 0.15s ease;
-}
-
-.btn-solid:hover {
-  background-color: var(--color-border);
-  color: var(--color-bg);
-}
-
-.btn-outline {
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.btn-outline:hover {
-  background-color: var(--color-border);
-  color: var(--color-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
 }
 
 .link-underline {
   text-decoration: underline;
-  text-decoration-color: var(--color-border-soft);
+  text-decoration-color: var(--color-border-strong);
   text-underline-offset: 3px;
-  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
 }
 
 .link-underline:hover {
@@ -173,29 +167,23 @@ body {
   color: var(--color-accent);
 }
 
-/* Solid color-block surfaces — the hero stat tiles, CTA banners, status
-   badges. Text color is picked per block for contrast, not themed. */
-.block-red { background-color: var(--color-red); color: #fff; }
-.block-blue { background-color: var(--color-blue); color: #fff; }
-.block-yellow { background-color: var(--color-yellow); color: #171308; }
-.block-green { background-color: var(--color-green); color: #fff; }
-
 .status-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
 }
 
-.status-live { background-color: var(--color-green); color: #fff; }
-.status-repo { background-color: var(--color-blue); color: #fff; }
-.status-case-study { background-color: var(--color-yellow); color: #171308; }
+.status-live { background-color: color-mix(in srgb, var(--color-green) 18%, transparent); color: var(--color-green); }
+.status-repo { background-color: var(--color-accent-soft); color: var(--color-accent); }
+.status-case-study { background-color: color-mix(in srgb, var(--color-amber) 18%, transparent); color: var(--color-amber); }
 .status-queued {
-  border: 1px dashed var(--color-border-soft);
+  border: 1px dashed var(--color-border-strong);
   color: var(--color-text-dim);
 }
 
@@ -208,17 +196,11 @@ body {
   animation: pulse-dot 1.8s ease-in-out infinite;
 }
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.6s ease-out both;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .pulse-dot {
     animation: none;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }

@@ -29,10 +29,7 @@ export default function AnimatedNumber({ value, suffix, className }: AnimatedNum
     if (!visible || started.current) return;
     started.current = true;
 
-    if (REDUCE_MOTION) {
-      setDisplay(target);
-      return;
-    }
+    if (REDUCE_MOTION) return;
 
     const duration = 1100;
     const start = performance.now();
@@ -48,7 +45,7 @@ export default function AnimatedNumber({ value, suffix, className }: AnimatedNum
 
   return (
     <span ref={ref} className={`tabular-nums ${className ?? ""}`}>
-      {display}
+      {REDUCE_MOTION && visible ? target : display}
       {tail}
       {suffix}
     </span>

@@ -12,7 +12,7 @@ const NAV = [
 
 export default function Footer() {
   return (
-    <footer className="rule border-t px-6 py-14">
+    <footer className="border-t border-[var(--color-border)] px-6 py-14">
       <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-4">
         <div>
           <p className="text-lg font-extrabold text-[var(--color-text)]">{profile.name}</p>
@@ -62,13 +62,13 @@ export default function Footer() {
             <li>{profile.email}</li>
             <li>{profile.location}</li>
           </ul>
-          <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-outline mt-4 inline-flex items-center px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+          <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-ghost mt-4 inline-flex items-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide">
             Download Resume
           </a>
         </div>
       </div>
 
-      <div className="rule mx-auto mt-10 max-w-6xl border-t pt-6 text-sm text-[var(--color-text-dim)]">
+      <div className="mx-auto mt-10 max-w-6xl border-t border-[var(--color-border)] pt-6 text-sm text-[var(--color-text-dim)]">
         &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
       </div>
     </footer>

@@ -1,29 +1,45 @@
-import { useReveal } from "../hooks/useReveal";
 import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
 import { skillGroups } from "../data/content";
 
-export default function Skills() {
-  const { ref, visible } = useReveal<HTMLDivElement>();
+const SPAN: Record<string, string> = {
+  "Programming": "sm:col-span-1",
+  "Databricks & Streaming": "sm:col-span-2",
+  "Cloud & Platforms": "sm:col-span-2",
+  "Architecture & Modeling": "sm:col-span-1",
+  "Governance & Quality": "sm:col-span-1",
+  "GenAI & AI-Assisted Dev": "sm:col-span-2",
+  "Tools & DevOps": "sm:col-span-4",
+};
 
+const FEATURED = new Set(["GenAI & AI-Assisted Dev"]);
+
+export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="03" title="Skills" description="Grouped the way I actually use them, not an alphabetical keyword dump." />
 
-      <div ref={ref} className={`rule border-t transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}>
-        {skillGroups.map((group) => (
-          <div key={group.label} className="rule grid grid-cols-12 gap-x-6 gap-y-3 border-b py-6">
-            <h3 className="col-span-12 font-mono text-sm font-semibold uppercase tracking-wide text-[var(--color-text)] sm:col-span-3">
-              {group.label}
-            </h3>
-            <div className="col-span-12 flex flex-wrap gap-2 sm:col-span-9">
-              {group.items.map((item) => (
-                <span key={item} className="tag px-2.5 py-1 text-xs text-[var(--color-text-muted)]">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-4" style={{ gridAutoFlow: "dense" }}>
+        {skillGroups.map((group, i) => {
+          const featured = FEATURED.has(group.label);
+          return (
+            <Reveal key={group.label} delay={0.04 * i} className={SPAN[group.label] ?? "sm:col-span-1"}>
+              <TiltCard className={`h-full p-6 ${featured ? "glow-accent" : ""}`}>
+                <h3 className={`text-sm font-semibold ${featured ? "gradient-text" : "text-[var(--color-text)]"}`}>
+                  {group.label}
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span key={item} className="tag rounded-full px-3 py-1 font-mono text-xs text-[var(--color-text-muted)]">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </TiltCard>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

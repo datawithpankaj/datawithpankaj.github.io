@@ -3,6 +3,7 @@ import type { FormEvent } from "react";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 import { profile } from "../data/content";
 
 // Set VITE_FORMSPREE_ID in a .env file (see README) once you've created a
@@ -13,7 +14,7 @@ const FORM_ENDPOINT = FORMSPREE_ID ? `https://formspree.io/f/${FORMSPREE_ID}` : 
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "w-full border-0 border-b border-[var(--color-border)] bg-transparent py-2 text-[var(--color-text)] outline-none focus:border-[var(--color-accent)]";
+  "w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)] px-3 py-2.5 text-[var(--color-text)] outline-none transition-colors focus:border-[var(--color-accent)]";
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
@@ -50,68 +51,72 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="06" title="Contact" description="Freelance work, full-time roles, or just a hello." />
 
-      <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-12 sm:col-span-4">
-          <p className="text-[var(--color-text-muted)]">
-            Whether it's a freelance data engineering project, a full-time role, or a question
-            about something I built, I read every message.
-          </p>
-
-          <div className="mt-8 space-y-4">
-            <a href={`mailto:${profile.email}`} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
-              <Mail size={18} />
-              <span className="font-mono text-sm">{profile.email}</span>
-            </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
-              <LinkedinIcon size={18} />
-              <span className="font-mono text-sm">linkedin.com/in/mepankajkumar</span>
-            </a>
-            <a href={profile.github} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
-              <GithubIcon size={18} />
-              <span className="font-mono text-sm">github.com/datawithpankaj</span>
-            </a>
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="col-span-12 sm:col-span-8">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="flex flex-col gap-2">
-              <label htmlFor="name" className="font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">
-                Your name
-              </label>
-              <input id="name" name="name" required className={fieldClass} />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">
-                Your email
-              </label>
-              <input id="email" name="email" type="email" required className={fieldClass} />
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-col gap-2">
-            <label htmlFor="message" className="font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">
-              What are you looking for?
-            </label>
-            <textarea id="message" name="message" rows={4} required className={`${fieldClass} resize-none`} />
-          </div>
-
-          <button type="submit" disabled={status === "sending"} className="btn-solid mt-6 px-6 py-3 text-sm font-semibold uppercase tracking-wide disabled:opacity-60">
-            {status === "sending" ? "Sending..." : "Send message"}
-          </button>
-
-          {status === "sent" && (
-            <p className="mt-3 text-sm" style={{ color: "var(--color-accent)" }}>
-              Thanks, message sent. I'll get back to you soon.
+      <div className="grid grid-cols-12 gap-6">
+        <Reveal className="col-span-12 sm:col-span-4" delay={0.05}>
+          <div className="glass h-full rounded-3xl p-8">
+            <p className="text-[var(--color-text-muted)]">
+              Whether it's a freelance data engineering project, a full-time role, or a question
+              about something I built, I read every message.
             </p>
-          )}
-          {status === "error" && (
-            <p className="mt-3 text-sm text-red-600">Something went wrong. Email me directly at {profile.email}.</p>
-          )}
-        </form>
+
+            <div className="mt-8 space-y-4">
+              <a href={`mailto:${profile.email}`} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
+                <Mail size={18} />
+                <span className="font-mono text-sm">{profile.email}</span>
+              </a>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
+                <LinkedinIcon size={18} />
+                <span className="font-mono text-sm">linkedin.com/in/mepankajkumar</span>
+              </a>
+              <a href={profile.github} target="_blank" rel="noreferrer" className="link-underline flex items-center gap-3 text-[var(--color-text)]">
+                <GithubIcon size={18} />
+                <span className="font-mono text-sm">github.com/datawithpankaj</span>
+              </a>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="col-span-12 sm:col-span-8" delay={0.1}>
+          <form onSubmit={handleSubmit} className="glass rounded-3xl p-8">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name" className="font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">
+                  Your name
+                </label>
+                <input id="name" name="name" required className={fieldClass} />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">
+                  Your email
+                </label>
+                <input id="email" name="email" type="email" required className={fieldClass} />
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-col gap-2">
+              <label htmlFor="message" className="font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">
+                What are you looking for?
+              </label>
+              <textarea id="message" name="message" rows={4} required className={`${fieldClass} resize-none`} />
+            </div>
+
+            <button type="submit" disabled={status === "sending"} className="btn-primary mt-6 rounded-full px-6 py-3 text-sm uppercase tracking-wide disabled:opacity-60">
+              {status === "sending" ? "Sending..." : "Send message"}
+            </button>
+
+            {status === "sent" && (
+              <p className="mt-3 text-sm" style={{ color: "var(--color-accent-2)" }}>
+                Thanks, message sent. I'll get back to you soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mt-3 text-sm text-red-400">Something went wrong. Email me directly at {profile.email}.</p>
+            )}
+          </form>
+        </Reveal>
       </div>
     </section>
   );

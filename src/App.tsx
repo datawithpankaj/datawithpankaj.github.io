@@ -25,7 +25,7 @@ export default function App() {
         <Projects />
         <Services />
         <Contact />
-        <section className="rule flex justify-center border-t py-14">
+        <section className="flex justify-center border-t border-[var(--color-border)] py-14">
           <ToptalBadge />
         </section>
       </main>
