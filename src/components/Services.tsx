@@ -24,11 +24,9 @@ export default function Services() {
         ))}
       </div>
 
-      <div className="mt-8 flex flex-col items-start justify-between gap-4 p-6 sm:flex-row sm:items-center" style={{ backgroundColor: "var(--color-text)" }}>
-        <p className="text-lg font-semibold" style={{ color: "var(--color-bg)" }}>
-          Have a data engineering problem to solve? Let's talk about scope, timeline, and fit.
-        </p>
-        <a href="#contact" className="flex-none px-5 py-2.5 text-sm font-semibold uppercase tracking-wide" style={{ backgroundColor: "var(--color-accent)", color: "#fff" }}>
+      <div className="block-blue mt-8 flex flex-col items-start justify-between gap-4 p-6 sm:flex-row sm:items-center">
+        <p className="text-lg font-semibold">Have a data engineering problem to solve? Let's talk about scope, timeline, and fit.</p>
+        <a href="#contact" className="flex-none bg-white px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-[var(--color-blue)]">
           Get in touch
         </a>
       </div>

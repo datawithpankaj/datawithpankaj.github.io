@@ -15,6 +15,13 @@
 
   --color-accent: #e0301e;
   --color-accent-soft: #e0301e12;
+
+  /* Bold color-blocking palette — used deliberately, not everywhere:
+     stat tiles, section numerals (cycled), status badges, CTA blocks. */
+  --color-red: #e0301e;
+  --color-blue: #2563eb;
+  --color-yellow: #ffb800;
+  --color-green: #16a34a;
 }
 
 :root {
@@ -38,6 +45,11 @@
     --color-accent: #ff4d3a;
     --color-accent-soft: #ff4d3a1f;
 
+    --color-red: #ff4d3a;
+    --color-blue: #5b8def;
+    --color-yellow: #ffc94d;
+    --color-green: #34d399;
+
     --color-shadow-photo: rgba(0, 0, 0, 0.55);
     color-scheme: dark;
   }
@@ -54,6 +66,11 @@
 
   --color-accent: #ff4d3a;
   --color-accent-soft: #ff4d3a1f;
+
+  --color-red: #ff4d3a;
+  --color-blue: #5b8def;
+  --color-yellow: #ffc94d;
+  --color-green: #34d399;
 
   --color-shadow-photo: rgba(0, 0, 0, 0.55);
   color-scheme: dark;
@@ -123,13 +140,14 @@ body {
 }
 
 .btn-solid {
-  background-color: var(--color-border);
-  color: var(--color-bg);
-  transition: background-color 0.15s ease;
+  background-color: var(--color-red);
+  color: #fff;
+  transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
 .btn-solid:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-border);
+  color: var(--color-bg);
 }
 
 .btn-outline {
@@ -153,6 +171,32 @@ body {
 .link-underline:hover {
   text-decoration-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+/* Solid color-block surfaces — the hero stat tiles, CTA banners, status
+   badges. Text color is picked per block for contrast, not themed. */
+.block-red { background-color: var(--color-red); color: #fff; }
+.block-blue { background-color: var(--color-blue); color: #fff; }
+.block-yellow { background-color: var(--color-yellow); color: #171308; }
+.block-green { background-color: var(--color-green); color: #fff; }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+}
+
+.status-live { background-color: var(--color-green); color: #fff; }
+.status-repo { background-color: var(--color-blue); color: #fff; }
+.status-case-study { background-color: var(--color-yellow); color: #171308; }
+.status-queued {
+  border: 1px dashed var(--color-border-soft);
+  color: var(--color-text-dim);
 }
 
 @keyframes pulse-dot {

@@ -29,10 +29,14 @@ export default function Projects() {
               }}
             >
               <div className="flex items-start justify-between gap-3">
-                <span className="font-mono text-xs" style={{ color: "var(--color-accent)" }}>
+                <span className="font-mono text-xs" style={{ color: "var(--color-blue)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="eyebrow">
+                <span
+                  className={`status-badge ${
+                    project.comingSoon ? "status-queued" : project.link ? "status-live" : project.repo ? "status-repo" : "status-case-study"
+                  }`}
+                >
                   {project.comingSoon ? "Queued" : project.link ? "Live" : project.repo ? "Repo" : "Case Study"}
                 </span>
               </div>

@@ -11,6 +11,8 @@ const SOCIALS = [
   { href: `mailto:${profile.email}`, label: "Email", Icon: Mail },
 ];
 
+const CYCLE = ["var(--color-red)", "var(--color-blue)", "var(--color-yellow)", "var(--color-green)"];
+
 const INDEX = [
   { n: "01", href: "#about", label: "About" },
   { n: "02", href: "#experience", label: "Experience" },
@@ -19,6 +21,8 @@ const INDEX = [
   { n: "05", href: "#services", label: "Freelance" },
   { n: "06", href: "#contact", label: "Contact" },
 ];
+
+const STAT_BLOCKS = ["block-red", "block-blue", "block-yellow", "block-green"];
 
 export default function Hero() {
   return (
@@ -49,7 +53,11 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mt-5 h-2 w-24" style={{ backgroundColor: "var(--color-accent)" }} />
+      <div className="mt-5 flex h-2 w-32 overflow-hidden">
+        {CYCLE.map((c) => (
+          <span key={c} className="h-full w-1/4" style={{ backgroundColor: c }} />
+        ))}
+      </div>
       <p className="mt-6 font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
         Senior Data Engineer · {profile.location}
         <span className="pulse-dot ml-1" style={{ color: "var(--color-accent)" }}>
@@ -90,31 +98,36 @@ export default function Hero() {
         </div>
       </div>
 
-      <dl className="rule mt-14 grid grid-cols-2 gap-6 border-t pt-8 sm:grid-cols-4">
-        {profile.stats.map((stat) => (
-          <div key={stat.label}>
-            <dt className="text-4xl font-extrabold text-[var(--color-text)]">
-              <AnimatedNumber value={stat.value} suffix="" />
-              <span style={{ color: "var(--color-accent)" }}>{stat.suffix}</span>
+      <dl className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {profile.stats.map((stat, i) => (
+          <div key={stat.label} className={`${STAT_BLOCKS[i % STAT_BLOCKS.length]} p-5`}>
+            <dt className="text-4xl font-extrabold">
+              <AnimatedNumber value={stat.value} suffix={stat.suffix} />
             </dt>
-            <dd className="mt-1 font-mono text-xs uppercase tracking-wide text-[var(--color-text-dim)]">{stat.label}</dd>
+            <dd className="mt-1 font-mono text-xs uppercase tracking-wide opacity-80">{stat.label}</dd>
           </div>
         ))}
       </dl>
 
       <div className="rule mt-14 border-t">
-        {INDEX.map((item) => (
+        {INDEX.map((item, i) => (
           <a
             key={item.href}
             href={item.href}
-            className="rule group flex items-center justify-between border-b py-3 text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+            className="rule group flex items-center justify-between border-b py-3 text-[var(--color-text)] transition-colors"
           >
             <span className="flex items-center gap-4">
-              <span className="font-mono text-sm" style={{ color: "var(--color-accent)" }}>{item.n}</span>
+              <span className="font-mono text-sm" style={{ color: CYCLE[i % CYCLE.length] }}>{item.n}</span>
               <span className="text-lg font-semibold sm:text-xl">{item.label}</span>
             </span>
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)]">
-              Scroll ↓
+            <span
+              className="font-mono text-xs uppercase tracking-widest text-[var(--color-text-dim)]"
+              style={{ transition: "color 0.15s ease" }}
+            >
+              <span className="group-hover:hidden">Scroll ↓</span>
+              <span className="hidden group-hover:inline" style={{ color: CYCLE[i % CYCLE.length] }}>
+                Scroll ↓
+              </span>
             </span>
           </a>
         ))}

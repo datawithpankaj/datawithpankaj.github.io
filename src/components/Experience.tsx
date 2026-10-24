@@ -2,6 +2,8 @@ import { useReveal } from "../hooks/useReveal";
 import SectionHeading from "./SectionHeading";
 import { certifications, experience } from "../data/content";
 
+const CYCLE = ["var(--color-red)", "var(--color-blue)", "var(--color-yellow)", "var(--color-green)"];
+
 export default function Experience() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
@@ -16,7 +18,7 @@ export default function Experience() {
       <div ref={ref} className={`rule border-t transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}>
         {experience.map((job, i) => (
           <div key={job.company + job.period} className="rule grid grid-cols-12 gap-x-6 gap-y-3 border-b py-10">
-            <span className="col-span-4 font-mono text-sm text-[var(--color-text-dim)] sm:col-span-2">
+            <span className="col-span-4 font-mono text-sm sm:col-span-2" style={{ color: CYCLE[i % CYCLE.length] }}>
               {String(i + 1).padStart(2, "0")}
             </span>
 
