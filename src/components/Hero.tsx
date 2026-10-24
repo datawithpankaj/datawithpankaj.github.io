@@ -94,7 +94,7 @@ export default function Hero() {
           className="pointer-events-none absolute bottom-[-1rem] right-0 hidden w-44 sm:block md:w-56 lg:w-64"
         >
           <div className="pointer-events-auto">
-            <InteractivePhoto className="aspect-[4/5]" />
+            <InteractivePhoto className="aspect-square" />
           </div>
         </motion.div>
       </div>
@@ -137,7 +137,7 @@ export default function Hero() {
         </Reveal>
 
         <div className="col-span-6 sm:hidden">
-          <InteractivePhoto className="aspect-[4/5]" />
+          <InteractivePhoto className="aspect-square" />
         </div>
       </div>
 
